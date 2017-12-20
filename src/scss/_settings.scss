@@ -65,8 +65,10 @@
 // 1. Global
 // ---------
 $ice: #2DEBC9;
+$light-ice: #87D0DC;
 $dark-blue: #001A34;
 $ice-grey: #747F7D;
+$alt-ice: #2AC7DA;
 
 $global-font-size: 100%;
 $global-width: rem-calc(1200);
@@ -850,7 +852,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: $light-gray;
+$topbar-background: $white;
 $topbar-submenu-background: $topbar-background;
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;
