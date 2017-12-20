@@ -5,6 +5,7 @@ import App from './App'
 import './foundation'
 import router from './router'
 import store from './store'
+import 'foundation-sites/scss/foundation.scss'
 
 Vue.config.productionTip = false
 
@@ -14,5 +15,8 @@ new Vue({
   router,
   store,
   template: '<App/>',
+  mounted(){
+    $(this.$el).foundation();
+  },
   components: { App }
 })

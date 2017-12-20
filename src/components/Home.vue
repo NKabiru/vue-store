@@ -1,5 +1,7 @@
 <template>
-    
+    <div class="grid-container">
+        <div class="grid-x"></div>
+    </div>
 </template>
 
 <script>

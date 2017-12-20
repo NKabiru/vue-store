@@ -1,3 +1,10 @@
 @import "settings";
 
 @import "~foundation-sites/scss/foundation";
+
+@include foundation-everything(true);
+
+@import '~motion-ui/dist/motion-ui';
+
+@import "modules/all";
+@import "partials/base";
