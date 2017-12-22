@@ -1,6 +1,6 @@
 <template>
     <div class="grid-container">
-        <div class="grid-x grid-padding-x">
+        <div class="grid-x grid-padding-x grid-space">
             <div class="cell small-12 large-8">
                 <carousel></carousel>
             </div>
