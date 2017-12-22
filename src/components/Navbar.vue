@@ -3,8 +3,8 @@
         <div class="top-bar-left">
             <ul class="menu">
                 <li class="menu-text">Game Store</li>
-                <li><router-link :to="{ name: 'Top Sellers'}">Top Sellers</router-link></li>
-                <li><router-link :to="{ name: 'New Releases'}">New Releases</router-link></li>
+                <li><router-link class="navbar-links" :to="{ name: 'Top Sellers'}">Top Sellers</router-link></li>
+                <li><router-link class="navbar-links" :to="{ name: 'New Releases'}">New Releases</router-link></li>
             </ul>
         </div>
         <div class="top-bar-right">
