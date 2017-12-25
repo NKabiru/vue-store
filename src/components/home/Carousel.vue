@@ -33,11 +33,24 @@
                 </li>
             </ul>
         </div>
+        <button class="button" type="button" @click="getGame">View API</button>
     </div>
 </template>
 
 <script>
+    import { apiKey } from "../../api/config";
+    import { baseUrl} from "../../api";
+    var m  = require('mithril');
+
     export default {
-        name: "carousel"
+        name: "carousel",
+        methods: {
+            getGame(){
+                m.jsonp({
+                    url: baseUrl + 'game/3030-4725/?api_key=' + apiKey + '&format=jsonp&filter=name,description,image&',
+                    callbackKey: 'json_callback'
+                }).then(result => console.log(result))
+            }
+        }
     }
 </script>
