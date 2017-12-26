@@ -33,7 +33,7 @@
                 </li>
             </ul>
         </div>
-        <button class="button" type="button" @click="getGame">View API</button>
+        <button class="button" type="button" @click="getGame(carouselGameIDs[0])">View API</button>
     </div>
 </template>
 
@@ -44,12 +44,22 @@
 
     export default {
         name: "carousel",
+        data(){
+            return{
+                carouselGameIDs: ['3030-54134','3030-59203','3030-52647','3030-58573','3030-54144']
+            }
+        },
         methods: {
-            getGame(){
+            getGame(gameID){
                 m.jsonp({
-                    url: baseUrl + 'game/3030-4725/?api_key=' + apiKey + '&format=jsonp&filter=name,description,image&',
+                    url: `${ baseUrl }/game/${ gameID }/`,
+                    data: {
+                        api_key: apiKey,
+                        format: 'jsonp',
+                        field_list: 'name,deck,image'
+                    },
                     callbackKey: 'json_callback'
-                }).then(result => console.log(result))
+                }).then(game => console.log(game))
             }
         }
     }

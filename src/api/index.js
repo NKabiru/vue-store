@@ -1,3 +1,3 @@
-const baseUrl = 'https://www.giantbomb.com/api/'
+const baseUrl = 'https://www.giantbomb.com/api'
 
 export { baseUrl }
