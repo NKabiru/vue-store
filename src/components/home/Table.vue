@@ -2,7 +2,7 @@
     <table class="unstriped" v-if="tableGameData.length > 0">
         <tbody>
         <tr v-for="game in tableGameData">
-            <td><img class="table-icon" :src="game.image.medium_url"></td>
+            <td class="table-icon"><img class="game-image" :src="game.image.medium_url"></td>
             <td>{{ game.name }}</td>
             <td>
                 <button class="tiny button"></button>
