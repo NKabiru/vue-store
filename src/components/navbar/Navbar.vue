@@ -7,7 +7,6 @@
         </div>
         <div class="top-bar-right">
             <ul class="menu">
-                <li><input type="text" placeholder="Search"></li>
                 <li><button class="clear button" data-open="signInModal">Sign In</button></li>
                 <li><button class="clear button" data-open="signUpModal">Sign Up</button></li>
                 <li><a href="#">Cart</a></li>
