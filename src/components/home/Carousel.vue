@@ -7,16 +7,13 @@
 </template>
 
 <script>
+    import ElCarousel from "element-ui/packages/carousel/src/main"
+    import ElCarouselItem from "element-ui/packages/carousel/src/item"
     import { apiKey } from "../../api/config";
-    import { baseUrl} from "../../api";
-    import ElCarousel from "element-ui/packages/carousel/src/main";
-    import ElCarouselItem from "element-ui/packages/carousel/src/item";
-    var m  = require('mithril');
+    import { baseUrl } from "../../api";
+    let m = require('mithril');
 
     export default {
-        components: {
-            ElCarouselItem,
-            ElCarousel},
         name: "carousel-component",
         data() {
             return {
@@ -24,6 +21,7 @@
                 items: []
             }
         },
+
         mounted(){
             for(let i = 0; i < this.carouselGameIDs.length; i++){
                 m.jsonp({
@@ -39,8 +37,10 @@
                 })
             }
         },
-        methods: {
 
+        components: {
+            ElCarouselItem,
+            ElCarousel
         }
     }
 </script>

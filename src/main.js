@@ -9,6 +9,9 @@ import 'foundation-sites/scss/foundation.scss'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
+import { apiKey } from "./api/config"
+import { baseUrl } from "./api"
+let m = require('mithril')
 
 Vue.use(ElementUI, { locale })
 
