@@ -5,7 +5,7 @@
                 <carousel-component></carousel-component>
             </div>
             <div class="cell small-12 large-4">
-
+                <card-component></card-component>
             </div>
         </div>
         <div class="grid-x grid-padding-x grid-space">
@@ -22,9 +22,11 @@
 <script>
     import CarouselComponent from './Carousel'
     import TableComponent from "./Table";
+    import CardComponent from "./Card";
     export default {
         name: "home",
         components: {
+            CardComponent,
             TableComponent,
             CarouselComponent }
     }
