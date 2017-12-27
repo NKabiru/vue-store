@@ -1,53 +1,27 @@
 <template>
-    <div class="orbit" data-orbit>
-        <div class="orbit-wrapper">
-            <div class="orbit-controls">
-                <button class="orbit-previous"><span class="show-for-sr"></span>&#9664;&#xFE0E;</button>
-                <button class="orbit-next"><span class="show-for-sr"></span>&#9654;&#xFE0E;</button>
-            </div>
-            <ul class="orbit-container">
-                <li class="orbit-slide">
-                    <figure class="orbit-figure"><img :src="gameImageUrl[0]" alt="" class="orbit-image">
-                        <figcaption class="orbit-caption">Sample caption</figcaption>
-                    </figure>
-                </li>
-                <li class="orbit-slide">
-                    <figure class="orbit-figure"><img :src="gameImageUrl[1]" alt="" class="orbit-image">
-                        <figcaption class="orbit-caption">Sample caption</figcaption>
-                    </figure>
-                </li>
-                <li class="orbit-slide">
-                    <figure class="orbit-figure"><img :src="gameImageUrl[2]" alt="" class="orbit-image">
-                        <figcaption class="orbit-caption">Sample caption</figcaption>
-                    </figure>
-                </li>
-                <li class="orbit-slide">
-                    <figure class="orbit-figure"><img :src="gameImageUrl[3]" alt="" class="orbit-image">
-                        <figcaption class="orbit-caption">Sample caption</figcaption>
-                    </figure>
-                </li>
-                <li class="orbit-slide">
-                    <figure class="orbit-figure"><img :src="gameImageUrl[4]" alt="" class="orbit-image">
-                        <figcaption class="orbit-caption">Sample caption</figcaption>
-                    </figure>
-                </li>
-            </ul>
-        </div>
-        <!--<button class="button" type="button" @click="getGame(carouselGameIDs[0])">View API</button>-->
-    </div>
+    <el-carousel indicator-position="outside">
+        <el-carousel-item v-for="(item, index) in items" :key="index">
+            <img :src="items[index].image.screen_large_url">
+        </el-carousel-item>
+    </el-carousel>
 </template>
 
 <script>
     import { apiKey } from "../../api/config";
     import { baseUrl} from "../../api";
+    import ElCarousel from "element-ui/packages/carousel/src/main";
+    import ElCarouselItem from "element-ui/packages/carousel/src/item";
     var m  = require('mithril');
 
     export default {
-        name: "carousel",
+        components: {
+            ElCarouselItem,
+            ElCarousel},
+        name: "carousel-component",
         data() {
             return {
                 carouselGameIDs: ['3030-54134', '3030-59203', '3030-52647', '3030-58573', '3030-54144'],
-                gameImageUrl: []
+                items: []
             }
         },
         mounted(){
@@ -57,11 +31,11 @@
                     data: {
                         api_key: apiKey,
                         format: 'jsonp',
-                        field_list: 'name,deck,image'
+                        field_list: 'name,deck,image,guid'
                     },
                     callbackKey: 'json_callback'
                 }).then(game => {
-                    this.gameImageUrl.push(game.results.image.screen_large_url)
+                    this.items.push(game.results)
                 })
             }
         },
