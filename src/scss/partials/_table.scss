@@ -1,7 +1,15 @@
-.table-icon{
+.table-game-icon{
   width: 5.5rem;
 }
 .game-image{
   width: 5rem;
   height: 5rem;
+}
+.table-game-name{
+  width: 10rem;
+  font-weight: 600;
+  color: $dark-gray;
+}
+.table-game-details{
+  color: $black;
 }

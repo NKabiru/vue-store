@@ -2,10 +2,12 @@
     <table class="unstriped" v-if="tableGameData.length > 0">
         <tbody>
         <tr v-for="game in tableGameData">
-            <td class="table-icon"><img class="game-image" :src="game.image.medium_url"></td>
-            <td>{{ game.name }}</td>
+            <td class="table-game-icon"><img class="game-image" :src="game.image.medium_url"></td>
+            <td class="table-game-name">{{ game.name }}</td>
+            <td class="table-game-details">{{ game.deck }}</td>
             <td>
-                <button class="tiny button"></button>
+                <button class="tiny secondary button" type="button">View</button>
+                <button class="tiny success button" type="button">Add</button>
             </td>
         </tr>
         </tbody>
