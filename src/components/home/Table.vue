@@ -1,7 +1,7 @@
 <template>
-    <table class="unstriped" v-if="tableGameData.length > 0">
+    <table class="unstriped" v-if="tableItems.length > 0">
         <tbody>
-        <tr v-for="game in tableGameData">
+        <tr v-for="game in tableItems">
             <td class="table-game-icon"><img class="game-image" :src="game.image.medium_url"></td>
             <td class="table-game-name">{{ game.name }}</td>
             <td class="table-game-details">{{ game.deck }}</td>
@@ -23,25 +23,22 @@
         name: "table-component",
         data(){
             return{
-                tableGameIDs: ['3030-52647', '3030-58573', '3030-54144','3030-56733','3030-34407',
-                    '3030-48320', '3030-33394', '3030-30475', '3030-54979'],
-                tableGameData: []
+                tableItems: ''
             }
         },
         mounted(){
-            for(let i = 0; i < this.tableGameIDs.length; i++){
-                m.jsonp({
-                    url: `${ baseUrl }/game/${ this.tableGameIDs[i] }/`,
-                    data: {
-                        api_key: apiKey,
-                        format: 'jsonp',
-                        field_list: 'name,deck,image,guid'
-                    },
-                    callbackKey: 'json_callback'
-                }).then(game => {
-                    this.tableGameData.push(game.results)
-                })
-            }
+            m.jsonp({
+                url: `${ baseUrl }/games/`,
+                data: {
+                    api_key: apiKey,
+                    format: 'jsonp',
+                    field_list: 'name,deck,image,guid',
+                    filter:'id:52647|58573|54144|56733|34407|48320|33394|30475|54979'
+                },
+                callbackKey: 'json_callback'
+            }).then(game => {
+                this.tableItems = game.results
+            })
         }
     }
 </script>

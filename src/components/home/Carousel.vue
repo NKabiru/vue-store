@@ -1,7 +1,7 @@
 <template>
     <el-carousel indicator-position="outside">
-        <el-carousel-item v-for="(item, index) in items" :key="index">
-            <img :src="items[index].image.screen_large_url">
+        <el-carousel-item v-for="(item, index) in carouselItems" :key="index">
+            <img :src="item.image.screen_large_url">
         </el-carousel-item>
     </el-carousel>
 </template>
@@ -17,25 +17,23 @@
         name: "carousel-component",
         data() {
             return {
-                carouselGameIDs: ['3030-54134', '3030-59203', '3030-52647', '3030-58573', '3030-54144'],
-                items: []
+                carouselItems: ''
             }
         },
 
         mounted(){
-            for(let i = 0; i < this.carouselGameIDs.length; i++){
-                m.jsonp({
-                    url: `${ baseUrl }/game/${ this.carouselGameIDs[i] }/`,
-                    data: {
-                        api_key: apiKey,
-                        format: 'jsonp',
-                        field_list: 'name,deck,image,guid'
-                    },
-                    callbackKey: 'json_callback'
-                }).then(game => {
-                    this.items.push(game.results)
-                })
-            }
+            m.jsonp({
+                url: `${ baseUrl }/games/`,
+                data: {
+                    api_key: apiKey,
+                    format: 'jsonp',
+                    field_list: 'name,deck,image,guid',
+                    filter:'id:54134|59203|52647|58573|54144'
+                },
+                callbackKey: 'json_callback'
+            }).then(game => {
+                this.carouselItems = game.results
+            })
         },
 
         components: {

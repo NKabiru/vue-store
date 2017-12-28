@@ -1,7 +1,7 @@
 <template>
     <div>
         <h5>Games of the week</h5>
-        <div class="card" v-for="game in cardGameData">
+        <div class="card" v-for="game in cardItems">
             <img class="card-game-image" :src="game.image.screen_url">
             <div class="card-section">{{ game.name }}</div>
         </div>
@@ -17,24 +17,22 @@
         name: "card-component",
         data(){
             return{
-                cardGameIDs: ['3030-54134', '3030-59203'],
-                cardGameData: []
+                cardItems: ''
             }
         },
         mounted(){
-            for(let i = 0; i < this.cardGameIDs.length; i++){
-                m.jsonp({
-                    url: `${ baseUrl }/game/${ this.cardGameIDs[i] }/`,
-                    data: {
-                        api_key: apiKey,
-                        format: 'jsonp',
-                        field_list: 'name,deck,image,guid'
-                    },
-                    callbackKey: 'json_callback'
-                }).then(game => {
-                    this.cardGameData.push(game.results)
-                })
-            }
+            m.jsonp({
+                url: `${ baseUrl }/games/`,
+                data: {
+                    api_key: apiKey,
+                    format: 'jsonp',
+                    field_list: 'name,deck,image,guid',
+                    filter:'id:54134|59203'
+                },
+                callbackKey: 'json_callback'
+            }).then(game => {
+                this.cardItems = game.results
+            })
         }
     }
 </script>
