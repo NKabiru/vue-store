@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h5>Games of the week</h5>
+        <h5>Featured</h5>
         <div class="card" v-for="game in cardItems">
             <img class="card-game-image" :src="game.image.screen_url">
             <div class="card-section">{{ game.name }}</div>

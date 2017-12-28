@@ -1,18 +1,17 @@
 <template>
-    <div>
-        <table class="unstriped" v-if="tableItems.length > 0">
-            <tbody>
-            <tr v-for="game in tableItems">
-                <td class="table-game-icon"><img class="game-image" :src="game.image.medium_url"></td>
-                <td class="table-game-name">{{ game.name }}</td>
-                <td class="table-game-details">{{ game.deck }}</td>
-                <td>
-                    <button class="tiny secondary button" data-open="viewGameModal" @click="showItemInModal(game)" type="button">View</button>
-                    <button class="tiny success button" type="button">Add</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="grid-x grid-padding-x">
+        <div class="small-12 medium-3 card-padding" v-for="game in tableItems">
+            <div class="card">
+                <img :src="game.image.small_url">
+                <div class="card-section">
+                    <div>{{ game.name }}</div>
+                    <div>
+                        <button class="tiny secondary button" data-open="viewGameModal" @click="showItemInModal(game)">Details</button>
+                        <button class="tiny primary button">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="reveal" id="viewGameModal" data-reveal>
             <h4>{{ selectedItem.name }}</h4>
