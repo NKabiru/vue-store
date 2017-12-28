@@ -17,7 +17,7 @@
         name: "carousel-component",
         data() {
             return {
-                carouselItems: ''
+                carouselItems: '',
             }
         },
 
@@ -34,6 +34,10 @@
             }).then(game => {
                 this.carouselItems = game.results
             })
+        },
+
+        methods: {
+
         },
 
         components: {

@@ -1,17 +1,26 @@
 <template>
-    <table class="unstriped" v-if="tableItems.length > 0">
-        <tbody>
-        <tr v-for="game in tableItems">
-            <td class="table-game-icon"><img class="game-image" :src="game.image.medium_url"></td>
-            <td class="table-game-name">{{ game.name }}</td>
-            <td class="table-game-details">{{ game.deck }}</td>
-            <td>
-                <button class="tiny secondary button" type="button">View</button>
-                <button class="tiny success button" type="button">Add</button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div>
+        <table class="unstriped" v-if="tableItems.length > 0">
+            <tbody>
+            <tr v-for="game in tableItems">
+                <td class="table-game-icon"><img class="game-image" :src="game.image.medium_url"></td>
+                <td class="table-game-name">{{ game.name }}</td>
+                <td class="table-game-details">{{ game.deck }}</td>
+                <td>
+                    <button class="tiny secondary button" data-open="viewGameModal" @click="showItemInModal(game)" type="button">View</button>
+                    <button class="tiny success button" type="button">Add</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="reveal" id="viewGameModal" data-reveal>
+            <h4>{{ selectedItem.name }}</h4>
+            <p>{{ selectedItem.deck }}</p>
+            <button class="hollow button secondary" data-close>Cancel</button>
+            <button class="close-button" data-close type="button"><span>&times;</span></button>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -23,7 +32,8 @@
         name: "table-component",
         data(){
             return{
-                tableItems: ''
+                tableItems: '',
+                selectedItem: ''
             }
         },
         mounted(){
@@ -39,6 +49,12 @@
             }).then(game => {
                 this.tableItems = game.results
             })
+        },
+
+        methods: {
+            showItemInModal(item){
+                this.selectedItem = item;
+            }
         }
     }
 </script>
