@@ -2,11 +2,11 @@
     <div class="grid-x grid-padding-x">
         <div class="small-12 medium-3 card-padding" v-for="game in tableItems">
             <div class="card">
-                <img :src="game.image.small_url">
+                <img class="card-image" :src="game.image.small_url">
                 <div class="card-section">
                     <div>{{ game.name }}</div>
                     <div>
-                        <button class="tiny secondary button" data-open="viewGameModal" @click="showItemInModal(game)">Details</button>
+                        <button class="tiny secondary button" @click="showItemInModal(game)">Details</button>
                         <button class="tiny primary button">Add</button>
                     </div>
                 </div>
@@ -48,12 +48,18 @@
             }).then(game => {
                 this.tableItems = game.results
             })
+
+            this.reveal = new Foundation.Reveal($('#viewGameModal'));
         },
 
         methods: {
             showItemInModal(item){
+                this.reveal.open();
                 this.selectedItem = item;
             }
+        },
+        destroyed(){
+            this.reveal.destroy()
         }
     }
 </script>
