@@ -1,5 +1,5 @@
 <template>
-    <el-carousel indicator-position="outside">
+    <el-carousel indicator-position="outside" height="25rem">
         <el-carousel-item v-for="(item, index) in carouselItems" :key="index">
             <img :src="item.image.screen_large_url">
         </el-carousel-item>
@@ -15,6 +15,7 @@
 
     export default {
         name: "carousel-component",
+
         data() {
             return {
                 carouselItems: '',
@@ -28,7 +29,7 @@
                     api_key: apiKey,
                     format: 'jsonp',
                     field_list: 'name,deck,image,guid',
-                    filter:'id:54134|59203|52647|58573|54144'
+                    filter:'id:59203|52647|58573'
                 },
                 callbackKey: 'json_callback'
             }).then(game => {
@@ -41,8 +42,8 @@
         },
 
         components: {
-            ElCarouselItem,
-            ElCarousel
+            ElCarousel,
+            ElCarouselItem
         }
     }
 </script>

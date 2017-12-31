@@ -27,7 +27,13 @@
 
 <script>
     export default {
-        name: "sign-in-modal"
+        name: "sign-in-modal",
+        mounted(){
+            this.reveal = new Foundation.Reveal($('#signInModal'))
+        },
+        destroyed(){
+            this.reveal.destroy()
+        }
     }
 </script>
 

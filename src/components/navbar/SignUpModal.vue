@@ -33,7 +33,13 @@
 
 <script>
     export default {
-        name: "sign-up-modal"
+        name: "sign-up-modal",
+        mounted(){
+            this.reveal = new Foundation.Reveal($('#signUpModal'))
+        },
+        destroyed(){
+            this.reveal.destroy()
+        }
     }
 </script>
 

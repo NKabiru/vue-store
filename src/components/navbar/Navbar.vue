@@ -27,7 +27,7 @@
 <script>
     import SignInModal from "./SignInModal";
     import SignUpModal from "./SignUpModal";
-    import 'vue-awesome/icons';
+    import 'vue-awesome/icons/shopping-cart';
     import Icon from 'vue-awesome/components/Icon';
 
     export default {
