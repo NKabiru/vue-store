@@ -21,6 +21,7 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  m,
   store,
   template: '<App/>',
   mounted(){
