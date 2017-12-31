@@ -1,7 +1,7 @@
 <template>
     <el-carousel indicator-position="outside" height="25rem">
         <el-carousel-item v-for="(item, index) in carouselItems" :key="index">
-            <img :src="item.image.screen_large_url">
+            <img class="carousel-image" :src="item.image.screen_large_url">
         </el-carousel-item>
     </el-carousel>
 </template>

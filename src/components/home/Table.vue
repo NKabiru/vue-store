@@ -42,7 +42,7 @@
                     api_key: apiKey,
                     format: 'jsonp',
                     field_list: 'name,deck,image,guid',
-                    filter:'id:52647|58573|54144|56733|34407|48320|33394|30475|54979'
+                    filter:'id:52647|54144|56733|34407|48320|33394|30475|54979'
                 },
                 callbackKey: 'json_callback'
             }).then(game => {
