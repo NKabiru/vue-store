@@ -22,6 +22,10 @@
             }
         },
 
+        computed:{
+
+        },
+
         mounted(){
             m.jsonp({
                 url: `${ baseUrl }/games/`,

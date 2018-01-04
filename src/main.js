@@ -5,29 +5,24 @@ import App from './App'
 import router from './router'
 import store from './store'
 import './foundation'
-import 'foundation-sites/scss/foundation.scss'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
-import { apiKey } from "./api/config"
-import { baseUrl } from "./api"
-let m = require('mithril')
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
-Vue.use(ElementUI, { locale })
+Vue.use(ElementUI, { locale });
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  apiKey,
-  baseUrl,
-  m,
   store,
   template: '<App/>',
   mounted(){
     $(this.$el).foundation();
   },
   components: { App }
-})
+});
