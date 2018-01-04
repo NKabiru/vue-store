@@ -1,5 +1,6 @@
 <template>
     <div class="reveal" id="cartModal">
+        <h4>Cart</h4>
         <template v-if="numberOfCartItems >= 1">
             <table class="unstriped">
                 <thead>
@@ -11,9 +12,9 @@
                 <tbody>
                     <tr v-for="item in cart">
                         <td>{{ item.name }}</td>
-                        <td>x 1</td>
-                        <td>4000</td>
-                        <td>4000</td>
+                        <td>x {{ item.quantity }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.quantity * item.price }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -25,6 +26,12 @@
 <script>
     export default {
         name: "cart",
+
+        data(){
+            return{
+                total: 0
+            }
+        },
 
         computed:{
             cart(){
@@ -46,7 +53,8 @@
 </script>
 
 <style lang="scss" scoped>
-.grey-text{
-    color: $dark-gray;
-}
+    .grey-text{
+        color: $dark-gray;
+        font-size: 0.8rem;
+    }
 </style>

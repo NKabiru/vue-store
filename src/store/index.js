@@ -23,7 +23,8 @@ const state = {
                 "image_tags": "All Images,Box Art"
             },
             "name": "Minecraft",
-            "price": 1500
+            "price": 1500,
+            "quantity": 1
         },
         {
             "deck": "The fifth installment in Bethesda's Elder Scrolls franchise is set in the eponymous province of Skyrim, where the ancient threat of dragons, led by the sinister Alduin, is rising again to threaten all mortal races. Only the player, as the prophesied hero the Dovahkiin, can save the world from destruction.",
@@ -41,7 +42,8 @@ const state = {
                 "image_tags": "All Images,Box Art"
             },
             "name": "The Elder Scrolls V: Skyrim",
-            "price": 2000
+            "price": 2000,
+            "quantity": 1
         },
         {
             "deck": "The sequel to Supersonic Acrobatic Rocket-Powered Battle-Cars, Rocket League is the second vehicular sports-action game developed by Psyonix.",
@@ -59,7 +61,8 @@ const state = {
                 "image_tags": "All Images"
             },
             "name": "Rocket League",
-            "price": 2500
+            "price": 2500,
+            "quantity": 1
         },
         {
             "deck": "The fifth numbered entry in the renowned Street Fighter series of fighting games has appeared as a PlayStation 4 and PC exclusive.",
@@ -77,7 +80,8 @@ const state = {
                 "image_tags": "All Images"
             },
             "name": "Street Fighter V",
-            "price": 5000
+            "price": 5000,
+            "quantity": 1
         },
         {
             "deck": "The full-fledged follow-up to Destiny, streamlining much of the previous game's mechanics while featuring larger worlds and new abilities.",
@@ -95,7 +99,8 @@ const state = {
                 "image_tags": "All Images"
             },
             "name": "Destiny 2",
-            "price": 7000
+            "price": 7000,
+            "quantity": 1
         },
         {
             "deck": "DC Comics characters collide in a second installment of this fighting game from the makers of Mortal Kombat.",
@@ -113,7 +118,8 @@ const state = {
                 "image_tags": "All Images"
             },
             "name": "Injustice 2",
-            "price": 6000
+            "price": 6000,
+            "quantity": 1
         },
         {
             "deck": "Led by the modder behind the Battle Royale mods for the ArmA series, PlayerUnknown's Battlegrounds is a shooter that pits 100 trigger-happy players in a large empty location where they must scavenge for weapons and fight to the death.",
@@ -131,7 +137,8 @@ const state = {
                 "image_tags": "All Images"
             },
             "name": "PlayerUnknown's Battlegrounds",
-            "price": 2500
+            "price": 2500,
+            "quantity": 1
         },
         {
             "deck": "Nintendo's favorite plumber and his new hat-shaped companion travel far beyond the Mushroom Kingdom in this Switch-exclusive 3D platformer.",
@@ -149,7 +156,8 @@ const state = {
                 "image_tags": "All Images,Box Art"
             },
             "name": "Super Mario Odyssey",
-            "price": 4000
+            "price": 4000,
+            "quantity": 1
         }
     ]
 };
