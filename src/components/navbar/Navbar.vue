@@ -15,11 +15,13 @@
                 <ul class="menu">
                     <li><button class="clear button" data-open="signInModal">Sign In</button></li>
                     <li><button class="clear button" data-open="signUpModal">Sign Up</button></li>
+                    <li><button class="clear button" data-open="addItemModal">Add Item</button></li>
                     <li><a href="#" data-open="cartModal"><icon name="shopping-cart"></icon> Cart</a></li>
                 </ul>
             </div>
             <sign-in-modal></sign-in-modal>
             <sign-up-modal></sign-up-modal>
+            <add-game-modal></add-game-modal>
             <cart></cart>
         </div>
     </div>
@@ -32,6 +34,7 @@
     import 'vue-awesome/icons/shopping-cart';
     import 'vue-awesome/icons/bars';
     import Icon from 'vue-awesome/components/Icon';
+    import AddGameModal from "./AddGameModal";
 
     export default {
         name: "navbar",
@@ -42,6 +45,7 @@
 
         },
         components: {
+            AddGameModal,
             SignUpModal,
             SignInModal,
             Icon,
