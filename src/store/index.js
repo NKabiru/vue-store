@@ -165,7 +165,7 @@ const state = {
 const getters = {
     numberOfCartItems: state => {
         return state.cart.length;
-    }
+    },
 };
 
 const mutations = {
@@ -173,7 +173,13 @@ const mutations = {
     //
     // },
     [ADD_TO_CART] (state, cartItem){
-        state.cart.push(cartItem);
+        if (state.cart.includes(cartItem)){
+            let existingItem = state.cart.find(item => item.id === cartItem.id);
+            existingItem.quantity++;
+            // state.cart.push(existingItem);
+        } else {
+            state.cart.push(cartItem);
+        }
     }
 };
 

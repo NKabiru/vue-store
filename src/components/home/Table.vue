@@ -68,8 +68,6 @@
             },
             addItemToCart(item){
                 this.$store.commit('ADD_TO_CART', item);
-                this.itemQuantity += 1;
-                this.$emit('increment');
             }
         },
         destroyed(){
