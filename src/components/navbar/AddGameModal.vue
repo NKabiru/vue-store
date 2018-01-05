@@ -13,7 +13,7 @@
             <div class="small-12 cell">
                 <template v-if="searchResults.length >= 1">
                     <p>Search Results:</p>
-                    <table>
+                    <table class="unstriped">
                         <tbody>
                             <tr v-for="game in searchResults">
                                 <td><img class="search-result-icon" :src="game.image.icon_url" alt=""></td>
@@ -24,7 +24,13 @@
                     </table>
                 </template>
             </div>
+            <div class="small-12-cell">
+                <button class="alert small button" data-close>Cancel</button>
+            </div>
         </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </template>
 

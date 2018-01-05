@@ -22,6 +22,9 @@
             &emsp;
             <button class="button" type="button" data-close>Submit</button>
         </div>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </template>
 

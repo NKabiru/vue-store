@@ -35,6 +35,9 @@
             </div>
         </template>
         <p class="grey-text" v-else><em>No Items in the cart</em></p>
+        <button class="close-button" data-close aria-label="Close modal" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
 </template>
 
