@@ -19,7 +19,8 @@
                 </tbody>
                 <tfoot>
                     <tr>
-                        <td></td>
+                        <td colspan="3">Total:</td>
+                        <td>{{ calculateCartTotal }}</td>
                     </tr>
                 </tfoot>
             </table>
@@ -29,6 +30,8 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         name: "cart",
 
@@ -42,9 +45,13 @@
             cart(){
                 return this.$store.state.cart;
             },
-            numberOfCartItems(){
-                return this.$store.getters.numberOfCartItems;
-            }
+            // numberOfCartItems(){
+            //     return this.$store.getters.numberOfCartItems;
+            // },
+            ...mapGetters([
+                'numberOfCartItems',
+                'calculateCartTotal'
+            ])
         },
 
         mounted(){
