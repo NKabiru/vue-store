@@ -58,7 +58,7 @@
         //         this.tableItems = game.results
         //     })
         //
-        //     this.reveal = new Foundation.Reveal($('#viewGameModal'));
+           this.reveal = new Foundation.Reveal($('#viewGameModal'));
         },
 
         methods: {
