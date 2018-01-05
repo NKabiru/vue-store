@@ -12,6 +12,11 @@
   height: 1rem;
 }
 
+.cell-center{
+  display: block !important;
+  margin: auto !important;
+}
+
 @media screen and (min-width: 530px){
   .search-result-icon{
     width: 3rem;

@@ -18,14 +18,14 @@
                             <tr v-for="game in searchResults">
                                 <td><img class="search-result-icon" :src="game.image.icon_url" alt=""></td>
                                 <td>{{ game.name }}</td>
-                                <td><button class="tiny hollow button">Add To Catalog</button></td>
+                                <td><button class="cell-center tiny hollow button">Add To Catalog</button></td>
                             </tr>
                         </tbody>
                     </table>
                 </template>
             </div>
             <div class="small-12-cell">
-                <button class="alert small button" data-close>Cancel</button>
+                <button class="alert small button" data-close @click="clearSearch">Cancel</button>
             </div>
         </div>
         <button class="close-button" data-close aria-label="Close modal" type="button">
@@ -66,8 +66,13 @@
                     },
                     callbackKey: 'json_callback'
                 }).then(game => {
-                    this.searchResults = game.results
+                    this.searchResults = game.results;
                 });
+            },
+
+            clearSearch(){
+                this.searchResults = [];
+                this.searchGame = '';
             }
         },
 
