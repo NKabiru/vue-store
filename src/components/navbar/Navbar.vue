@@ -15,15 +15,20 @@
                 <ul class="menu">
                     <li><button class="clear button" data-open="signInModal">Sign In</button></li>
                     <li><button class="clear button" data-open="signUpModal">Sign Up</button></li>
-                    <li><button class="clear button" data-open="addItemModal">Add Item</button></li>
-                    <li><a href="#" data-open="cartModal"><icon name="shopping-cart"></icon> Cart</a></li>
+                    <li><button class="clear button" data-open="addGameModal">Add Item</button></li>
+                    <li>
+                        <a href="#" data-open="cartModal">
+                            <img class="cart-icon" src="../../assets/shopping-cart.svg" alt="">
+                        </a>
+                    </li>
                 </ul>
             </div>
-            <sign-in-modal></sign-in-modal>
-            <sign-up-modal></sign-up-modal>
-            <add-game-modal></add-game-modal>
-            <cart></cart>
         </div>
+
+        <sign-in-modal></sign-in-modal>
+        <sign-up-modal></sign-up-modal>
+        <add-game-modal></add-game-modal>
+        <cart></cart>
     </div>
 </template>
 
