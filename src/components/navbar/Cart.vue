@@ -17,6 +17,11 @@
                         <td>{{ item.quantity * item.price }}</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
         </template>
         <p class="grey-text" v-else><em>No Items in the cart</em></p>

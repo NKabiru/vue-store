@@ -166,6 +166,12 @@ const getters = {
     numberOfCartItems: state => {
         return state.cart.length;
     },
+
+    calculateCartTotal: state => {
+        return state.cart.reduce((total, item) => {
+            return total + item.quantity * item.price;
+        }, 0)
+    }
 };
 
 const mutations = {
