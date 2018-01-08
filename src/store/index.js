@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import { ADD_TO_CART } from './mutation-types';
+import * as types from './mutation-types';
 
 Vue.use(Vuex);
 
@@ -175,14 +175,19 @@ const getters = {
 };
 
 const mutations = {
-    // POPULATE_GAMES: (state, payload) =>{
-    //
-    // },
-    [ADD_TO_CART] (state, cartItem){
+    [types.ADD_TO_CATALOG] (state, catalogItem) {
+        if(state.games.includes(catalogItem)){
+            this.$message.info("Item already exists in catalog");
+        }else{
+            state.games.push(catalogItem);
+            this.$message.success("Item added to catalog");
+        }
+    },
+
+    [types.ADD_TO_CART] (state, cartItem){
         if (state.cart.includes(cartItem)){
             let existingItem = state.cart.find(item => item.id === cartItem.id);
             existingItem.quantity++;
-            // state.cart.push(existingItem);
         } else {
             state.cart.push(cartItem);
         }

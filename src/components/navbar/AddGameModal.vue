@@ -18,7 +18,7 @@
                             <tr v-for="game in searchResults">
                                 <td><img class="search-result-icon" :src="game.image.icon_url" alt=""></td>
                                 <td>{{ game.name }}</td>
-                                <td><button class="cell-center tiny hollow button">Add To Catalog</button></td>
+                                <td><button class="cell-center tiny hollow button" @click="addGameToCatalog(game)">Add To Catalog</button></td>
                             </tr>
                         </tbody>
                     </table>
@@ -73,7 +73,12 @@
             clearSearch(){
                 this.searchResults = [];
                 this.searchGame = '';
+            },
+
+            addGameToCatalog(item){
+                this.$store.commit('ADD_TO_CATALOG', item)
             }
+
         },
 
         mounted(){
