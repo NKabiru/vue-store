@@ -76,7 +76,12 @@
             },
 
             addGameToCatalog(item){
-                this.$store.commit('ADD_TO_CATALOG', item)
+                if(this.$store.state.games.includes(item)){
+                    this.$message.info("The game already exists in the catalog.");
+                }else{
+                    this.$store.commit('ADD_TO_CATALOG', item);
+                    this.$message.success("Game added");
+                }
             }
 
         },

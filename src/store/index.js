@@ -176,12 +176,7 @@ const getters = {
 
 const mutations = {
     [types.ADD_TO_CATALOG] (state, catalogItem) {
-        if(state.games.includes(catalogItem)){
-            this.$message.info("Item already exists in catalog");
-        }else{
             state.games.push(catalogItem);
-            this.$message.success("Item added to catalog");
-        }
     },
 
     [types.ADD_TO_CART] (state, cartItem){
