@@ -1,11 +1,6 @@
 <template>
-    <!-- <el-carousel indicator-position="outside" height="25rem">
-        <el-carousel-item v-for="(item, index) in carouselItems" :key="index">
-            <img class="carousel-image" :src="item.image.screen_large_url">
-        </el-carousel-item>
-    </el-carousel> -->
-    <div class="orbit" role="region" aria-label="Favorite Space Pictures" data-orbit>
-  <div class="orbit-wrapper">
+  <div class="orbit" id="trending-games-orbit" role="region" aria-label="Trending Games" data-orbit>
+    <div class="orbit-wrapper">
     <div class="orbit-controls">
       <button class="orbit-previous"><span class="show-for-sr">Previous Slide</span>&#9664;&#xFE0E;</button>
       <button class="orbit-next"><span class="show-for-sr">Next Slide</span>&#9654;&#xFE0E;</button>
@@ -31,7 +26,7 @@
       </li>
     </ul>
   </div>
-  <nav class="orbit-bullets">
+    <nav class="orbit-bullets">
     <button class="is-active" data-slide="0"><span class="show-for-sr">Destiny 2</span><span class="show-for-sr">Current Slide</span></button>
     <button data-slide="1"><span class="show-for-sr">Middle-Earth: Shadow of War</span></button>
     <button data-slide="2"><span class="show-for-sr">Call of Duty: WWII</span></button>
@@ -51,7 +46,7 @@
 
         data() {
             return {
-                carouselItems: '',
+
             }
         },
 
@@ -60,22 +55,15 @@
         },
 
         mounted(){
-            m.jsonp({
-                url: `${ baseUrl }/games/`,
-                data: {
-                    api_key: apiKey,
-                    format: 'jsonp',
-                    field_list: 'name,deck,image,guid',
-                    filter:'id:59203|52647|58573'
-                },
-                callbackKey: 'json_callback'
-            }).then(game => {
-                this.carouselItems = game.results
-            })
+            this.orbit = new Foundation.Orbit($('#trending-games-orbit'));
         },
 
         methods: {
 
+        },
+
+        destroyed(){
+            this.orbit.destroy();
         },
 
         components: {
