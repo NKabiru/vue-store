@@ -1,17 +1,13 @@
 <template>
     <div class="grid-y">
-        <div style="height: 433px;" class="card cell" v-for="game in cardItems">
-            <img class="card-game-image" :src="game.image.super_url">
-            <div class="card-section">{{ game.name }}</div>
+        <div style="height: 433px;" class="card cell">
+            <img class="card-game-image" src="../../assets/card-image.jpg">
+            <div class="card-section"></div>
         </div>
     </div>
 </template>
 
 <script>
-    import {apiKey} from "../../api/config";
-    import {baseUrl} from "../../api";
-    let m = require('mithril');
-
     export default {
         name: "card-component",
         data(){
@@ -20,18 +16,7 @@
             }
         },
         mounted(){
-            m.jsonp({
-                url: `${ baseUrl }/games/`,
-                data: {
-                    api_key: apiKey,
-                    format: 'jsonp',
-                    field_list: 'name,deck,image,guid',
-                    filter:'id:38497'
-                },
-                callbackKey: 'json_callback'
-            }).then(game => {
-                this.cardItems = game.results
-            })
+
         }
     }
 </script>
