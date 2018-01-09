@@ -51,6 +51,7 @@
                 this.selectedItem = item;
             },
             addItemToCart(item){
+                this.$message.info("Added to cart");
                 this.$store.commit('ADD_TO_CART', item);
             }
         },
