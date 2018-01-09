@@ -176,7 +176,8 @@ const getters = {
 
 const mutations = {
     [types.ADD_TO_CATALOG] (state, catalogItem) {
-            state.games.push(catalogItem);
+        catalogItem.quantity = 1;
+        state.games.push(catalogItem);
     },
 
     [types.ADD_TO_CART] (state, cartItem){

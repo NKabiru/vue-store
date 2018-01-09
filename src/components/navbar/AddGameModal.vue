@@ -19,23 +19,36 @@
                             <tr v-for="game in searchResults">
                                 <td><img class="search-result-icon" :src="game.image.icon_url" alt=""></td>
                                 <td>{{ game.name }}</td>
-                                <td><button class="cell-center tiny hollow button" @click="addGameToCatalog(game)">Add To Catalog</button></td>
+                                <td><button class="cell-center tiny hollow button" data-open="addPriceModal" @click="selectedSearchItem(game)">Add To Catalog</button></td>
                             </tr>
                             </tbody>
                         </table>
-                        <div class="input-group">
-                            <span class="input-group-label">Kes</span>
-                            <input class="input-group-field" type="number" placeholder="Price">
-                        </div>
+
                     </template>
                 </div>
                 <div class="small-12-cell">
                     <button class="alert small button" data-close @click="clearSearch">Cancel</button>
                 </div>
             </div>
-            <button class="close-button" data-close aria-label="Close modal" type="button">
+            <button class="close-button" data-close @click="clearSearch" aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
             </button>
+        </div>
+
+        <div class="reveal" id="addPriceModal" data-reveal>
+            <h4>Set Price:</h4>
+            <div class="grid-x">
+                <div class="small-12 cell">
+                    <div class="input-group">
+                        <span class="input-group-label">Kes</span>
+                        <input class="input-group-field" v-model.number="price" type="number" placeholder="Price">
+                    </div>
+                </div>
+                <div class="small-12 cell">
+                    <button class="alert small button" data-close @click="clearSearch">Cancel</button>
+                    <button class="small button" data-close @click="addGameToCatalog(selectedGame)">Add Game</button>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -55,6 +68,8 @@
         data(){
             return{
                 searchGame: '',
+                price: '',
+                selectedGame: '',
                 searchResults: []
             }
         },
@@ -82,11 +97,18 @@
                 this.searchGame = '';
             },
 
+            selectedSearchItem(item){
+                this.selectedGame = item;
+            },
+
             addGameToCatalog(item){
                 if(this.$store.state.games.includes(item)){
                     this.$message.info("The game already exists in the catalog.");
+                    this.clearSearch();
                 }else{
+                    item.price = this.price;
                     this.$store.commit('ADD_TO_CATALOG', item);
+                    this.clearSearch();
                     this.$message.success("Game added");
                 }
             }
