@@ -24,10 +24,6 @@
 </template>
 
 <script>
-    import {apiKey} from "../../api/config";
-    import {baseUrl} from "../../api";
-    let m = require('mithril');
-
     export default {
         name: "table-component",
 
@@ -46,19 +42,6 @@
         },
 
         mounted(){
-        //     m.jsonp({
-        //         url: `${ baseUrl }/games/`,
-        //         data: {
-        //             api_key: apiKey,
-        //             format: 'jsonp',
-        //             field_list: 'name,deck,image,guid',
-        //             filter:'id:52647|54144|56733|34407|48320|33394|30475|54979'
-        //         },
-        //         callbackKey: 'json_callback'
-        //     }).then(game => {
-        //         this.tableItems = game.results
-        //     })
-        //
            this.reveal = new Foundation.Reveal($('#viewGameModal'));
         },
 
