@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <div class="card" v-for="game in cardItems">
-            <img class="card-game-image" :src="game.image.screen_large_url">
+    <div class="grid-y">
+        <div class="card cell" v-for="game in cardItems">
+            <img class="card-game-image" :src="game.image.super_url">
             <div class="card-section">{{ game.name }}</div>
         </div>
     </div>
@@ -26,7 +26,7 @@
                     api_key: apiKey,
                     format: 'jsonp',
                     field_list: 'name,deck,image,guid',
-                    filter:'id:54134'
+                    filter:'id:38497'
                 },
                 callbackKey: 'json_callback'
             }).then(game => {
