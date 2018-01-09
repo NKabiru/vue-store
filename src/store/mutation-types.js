@@ -1,3 +1,5 @@
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const ADD_TO_CATALOG = 'ADD_TO_CATALOG';
+export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
+export const DROP_ALL_CART_ITEMS = 'DROP_ALL_CART_ITEMS';
 

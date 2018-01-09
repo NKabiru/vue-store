@@ -185,9 +185,25 @@ const mutations = {
             let existingItem = state.cart.find(item => item.id === cartItem.id);
             existingItem.quantity++;
         } else {
+            if(cartItem.quantity == 0){
+                cartItem.quantity = 1;
+            }
             state.cart.push(cartItem);
         }
+    },
+
+    [types.REMOVE_FROM_CART] (state, cartItem){
+        if(state.cart.includes(cartItem)){
+            let existingItem = state.cart.find(item => item.id === cartItem.id);
+            let existingItemIndex = state.cart.findIndex(item => item.id === cartItem.id);
+            existingItem.quantity--;
+
+            if(existingItem.quantity === 0){
+                this.state.cart.splice(existingItemIndex, 1);
+            }
+        }
     }
+
 };
 
 const actions = {

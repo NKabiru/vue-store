@@ -10,6 +10,7 @@
                         <th>Quantity</th>
                         <th>Price</th>
                         <th>Total</th>
+                        <th></th>
                         </thead>
                         <tbody>
                         <tr v-for="item in cart">
@@ -17,11 +18,16 @@
                             <td>x {{ item.quantity }}</td>
                             <td>{{ item.price }}</td>
                             <td>{{ item.quantity * item.price }}</td>
+                            <td>
+                                <button class="tiny clear alert button" @click="removeItemFromCart(item)">
+                                    <icon name="minus-circle"></icon>
+                                </button>
+                            </td>
                         </tr>
                         </tbody>
                         <tfoot>
                         <tr>
-                            <td colspan="3">Total:</td>
+                            <td colspan="4">Total:</td>
                             <td>{{ calculateCartTotal }}</td>
                         </tr>
                         </tfoot>
@@ -43,8 +49,11 @@
 
 <script>
     import { mapGetters } from 'vuex';
+    import Icon from "vue-awesome/components/Icon";
+    import 'vue-awesome/icons/minus-circle';
 
     export default {
+        components: {Icon},
         name: "cart",
 
         data(){
@@ -57,13 +66,18 @@
             cart(){
                 return this.$store.state.cart;
             },
-            // numberOfCartItems(){
-            //     return this.$store.getters.numberOfCartItems;
-            // },
+
             ...mapGetters([
                 'numberOfCartItems',
                 'calculateCartTotal'
             ])
+        },
+
+        methods:{
+            removeItemFromCart(item){
+                this.$store.commit('REMOVE_FROM_CART', item);
+                this.$message.success("Item Removed");
+            }
         },
 
         mounted(){
