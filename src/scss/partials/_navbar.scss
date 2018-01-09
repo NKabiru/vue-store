@@ -17,6 +17,10 @@
   margin: auto !important;
 }
 
+.no-margin-bottom{
+  margin-bottom: 0;
+}
+
 @media screen and (min-width: 530px){
   .search-result-icon{
     width: 3rem;

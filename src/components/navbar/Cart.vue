@@ -19,7 +19,7 @@
                             <td>{{ item.price }}</td>
                             <td>{{ item.quantity * item.price }}</td>
                             <td>
-                                <button class="tiny clear alert button" @click="removeItemFromCart(item)">
+                                <button class="tiny clear alert button no-margin-bottom" @click="removeItemFromCart(item)">
                                     <icon name="minus-circle"></icon>
                                 </button>
                             </td>
