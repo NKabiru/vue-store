@@ -185,7 +185,7 @@ const mutations = {
             let existingItem = state.cart.find(item => item.id === cartItem.id);
             existingItem.quantity++;
         } else {
-            if(cartItem.quantity == 0){
+            if(cartItem.quantity === 0){
                 cartItem.quantity = 1;
             }
             state.cart.push(cartItem);
