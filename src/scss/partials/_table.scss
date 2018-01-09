@@ -22,3 +22,14 @@
   height: 20rem;
   display: block;
 }
+
+.game-text{
+  font-size: 0.9rem;
+  color: $dark-gray;
+}
+
+.card-buttons{
+  button{
+    margin-bottom: 0;
+  }
+}

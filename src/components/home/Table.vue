@@ -4,8 +4,9 @@
             <div class="card">
                 <img class="card-image" :src="game.image.small_url">
                 <div class="card-section">
-                    <div>{{ game.name }}</div>
-                    <div>
+                    <div class="game-text text-left">{{ game.name }}</div>
+                    <div class="text-left">Kes. {{ game.price }}</div>
+                    <div class="card-buttons">
                         <button class="tiny secondary button" @click="showItemInModal(game)">Details</button>
                         <button class="tiny primary button" @click="addItemToCart(game)">Add</button>
                     </div>
