@@ -1,6 +1,6 @@
 <template>
     <div class="grid-y">
-        <div class="card cell" v-for="game in cardItems">
+        <div style="height: 433px;" class="card cell" v-for="game in cardItems">
             <img class="card-game-image" :src="game.image.super_url">
             <div class="card-section">{{ game.name }}</div>
         </div>
