@@ -2,7 +2,7 @@
     <div class="grid-x grid-padding-x">
         <div class="small-12 medium-3 card-padding" v-for="game in showGames">
             <div class="card">
-                <img class="card-image" :src="game.image.small_url">
+                <img class="card-image" v-lazy="game.image.small_url">
                 <div class="card-section">
                     <div class="game-text text-left">{{ game.name }}</div>
                     <div class="text-left">Kes. {{ game.price }}</div>
