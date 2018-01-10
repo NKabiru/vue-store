@@ -5,20 +5,14 @@
             <div class="grid-x">
                 <div class="cell">
                     <label>
-                        Username
-                        <input type="text">
-                    </label>
-                </div>
-                <div class="cell">
-                    <label>
                         Email
-                        <input type="email">
+                        <input type="email" v-model="email">
                     </label>
                 </div>
                 <div class="cell">
                     <label>
                         Password
-                        <input type="password">
+                        <input type="password" v-model="password">
                     </label>
                 </div>
             </div>
@@ -35,9 +29,18 @@
 <script>
     export default {
         name: "sign-up-modal",
+
+        data(){
+            return {
+                email: '',
+                password: ''
+            }
+        },
+
         mounted(){
             this.reveal = new Foundation.Reveal($('#signUpModal'))
         },
+
         destroyed(){
             this.reveal.destroy()
         }

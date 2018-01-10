@@ -5,7 +5,7 @@
             <div class="grid-x">
                 <div class="cell">
                     <label>
-                        Username
+                        Email
                         <input type="text">
                     </label>
                 </div>
@@ -31,9 +31,18 @@
 <script>
     export default {
         name: "sign-in-modal",
+
+        data(){
+            return {
+                email: '',
+                password: ''
+            }
+        },
+
         mounted(){
             this.reveal = new Foundation.Reveal($('#signInModal'))
         },
+
         destroyed(){
             this.reveal.destroy()
         }

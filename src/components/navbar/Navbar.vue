@@ -13,8 +13,8 @@
             </div>
             <div class="top-bar-right">
                 <ul class="menu">
-                    <li><button class="clear button" data-open="signInModal">Sign In</button></li>
-                    <li><button class="clear button" data-open="signUpModal">Sign Up</button></li>
+                    <li><button class="clear button" data-open="signInModal">Login</button></li>
+                    <li><button class="clear button" data-open="signUpModal">Register</button></li>
                     <li><button class="clear button" data-open="addGameModal">Add Item</button></li>
                     <li>
                         <a href="#" data-open="cartModal">
