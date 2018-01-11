@@ -13,14 +13,17 @@
             </div>
             <div class="top-bar-right">
                 <ul class="menu">
-                    <li><button class="clear button" data-open="signInModal">Login</button></li>
-                    <li><button class="clear button" data-open="signUpModal">Register</button></li>
+                    <li v-if="!isLoggedIn"><button class="clear button" data-open="signInModal">Login</button></li>
+                    <li v-if="!isLoggedIn"><button class="clear button" data-open="signUpModal">Register</button></li>
                     <li><button class="clear button" data-open="addGameModal">Add Item</button></li>
                     <li>
                         <a href="#" data-open="cartModal">
                             <img v-if="numberOfCartItems < 1" class="cart-icon" src="../../assets/shopping-cart.svg">
                             <img v-else class="cart-icon" src="../../assets/full-shopping-cart.svg">
                         </a>
+                    </li>
+                    <li v-if="isLoggedIn">
+                        <button class="clear alert button" @click="logout">Logout</button>
                     </li>
                 </ul>
             </div>
