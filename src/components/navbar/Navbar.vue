@@ -59,6 +59,7 @@
         methods: {
             logout(){
                 this.$store.dispatch('logout');
+                this.$message.info('You are logged out');
             }
         },
 

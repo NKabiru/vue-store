@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const state = {
     cart: [],
     isLoggedIn: !!localStorage.getItem("token"),
+    users: [],
     games: [
         {
             "deck": "A procedurally-generated game of world exploration, resource harvesting, and freeform construction. It supports local and online multiplayer, and is regularly updated with new content and features.",
@@ -194,6 +195,19 @@ const mutations = {
         state.isLoggedIn = false;
     },
 
+    [types.REGISTER] (state, credentials) {
+        state.pending = true;
+        let token = jwt.sign(credentials, 'secret');
+        localStorage.setItem('token', token);
+        state.users.push({ email: credentials.email, token: token});
+        state.isLoggedIn = true;
+    },
+
+    [types.REGISTER_SUCCESS] (state) {
+        state.isLoggedIn = true;
+        state.pending = false;
+    },
+
     [types.ADD_TO_CATALOG] (state, catalogItem) {
         catalogItem.quantity = 1;
         state.games.push(catalogItem);
@@ -230,7 +244,7 @@ const actions = {
         commit(types.LOGIN);
         return new Promise(resolve => {
             setTimeout(() => {
-                var token = jwt.sign(credentials, 'secret');
+                let token = jwt.sign(credentials, 'secret');
                 localStorage.setItem('token', token);
                 commit(types.LOGIN_SUCCESS);
                 resolve();
@@ -241,7 +255,7 @@ const actions = {
     logout({ commit }){
         localStorage.removeItem('token');
         commit(types.LOGOUT);
-    }
+    },
 
 };
 

@@ -18,7 +18,7 @@
             </div>
         </form>
         <div class="grid-x">            &emsp;
-            <button class="button" type="button" data-close>Submit</button>
+            <button class="button" type="button" data-close @click="register()">Submit</button>
         </div>
         <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
@@ -34,6 +34,17 @@
             return {
                 email: '',
                 password: ''
+            }
+        },
+
+        methods: {
+            register(){
+                this.$store.commit('REGISTER', {
+                    email: this.email,
+                    password: this.password
+                });
+                this.$router.push('/');
+                this.$message.success('Logged In');
             }
         },
 
