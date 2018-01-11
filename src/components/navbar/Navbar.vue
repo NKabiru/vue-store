@@ -48,12 +48,15 @@
 
         computed:{
             ...mapGetters([
-                'numberOfCartItems'
+                'numberOfCartItems',
+                'isLoggedIn'
             ])
         },
 
         methods: {
-
+            logout(){
+                this.$store.dispatch('logout');
+            }
         },
 
         components: {

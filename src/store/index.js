@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import jwt from 'jsonwebtoken';
 import * as types from './mutation-types';
 
 Vue.use(Vuex);
 
 const state = {
     cart: [],
+    isLoggedIn: !!localStorage.getItem("token"),
     games: [
         {
             "deck": "A procedurally-generated game of world exploration, resource harvesting, and freeform construction. It supports local and online multiplayer, and is regularly updated with new content and features.",
@@ -171,10 +173,27 @@ const getters = {
         return state.cart.reduce((total, item) => {
             return total + item.quantity * item.price;
         }, 0)
+    },
+
+    isLoggedIn: state => {
+        return state.isLoggedIn;
     }
 };
 
 const mutations = {
+    [types.LOGIN] (state){
+        state.pending = true;
+    },
+
+    [types.LOGIN_SUCCESS] (state){
+        state.isLoggedIn = true;
+        state.pending = false;
+    },
+
+    [types.LOGOUT] (state) {
+        state.isLoggedIn = false;
+    },
+
     [types.ADD_TO_CATALOG] (state, catalogItem) {
         catalogItem.quantity = 1;
         state.games.push(catalogItem);
@@ -207,6 +226,22 @@ const mutations = {
 };
 
 const actions = {
+    login({ commit }, credentials){
+        commit(types.LOGIN);
+        return new Promise(resolve => {
+            setTimeout(() => {
+                var token = jwt.sign(credentials, 'secret');
+                localStorage.setItem('token', token);
+                commit(types.LOGIN_SUCCESS);
+                resolve();
+            }, 500);
+        });
+    },
+
+    logout({ commit }){
+        localStorage.removeItem('token');
+        commit(types.LOGOUT);
+    }
 
 };
 

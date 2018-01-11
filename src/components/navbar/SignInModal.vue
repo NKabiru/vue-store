@@ -20,7 +20,7 @@
         <div class="grid-x">
             <button class="hollow secondary button" type="button" data-close>Cancel</button>
             &emsp;
-            <button class="button" type="button" data-close>Submit</button>
+            <button class="button" type="button" data-close @click="login">Submit</button>
         </div>
         <button class="close-button" data-close aria-label="Close modal" type="button">
             <span aria-hidden="true">&times;</span>
@@ -36,6 +36,20 @@
             return {
                 email: '',
                 password: ''
+            }
+        },
+
+        methods: {
+            login(){
+                this.$store.dispatch("login", {
+                    email: this.email,
+                    password: this.password
+                }).then(() => {
+                    this.$router.push("/");
+                    this.$message.success("Logged In");
+                }).catch(err => {
+                    console.log(err);
+                })
             }
         },
 
