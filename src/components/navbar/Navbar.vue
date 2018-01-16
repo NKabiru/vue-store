@@ -18,7 +18,7 @@
 
                     <li v-if="isLoggedIn"><a>{{ loggedInUser }}</a></li>
 
-                    <li><button class="clear button" data-open="addGameModal">Add Item</button></li>
+                    <li v-if="isLoggedIn"><button class="clear button" data-open="addGameModal">Add Item</button></li>
                     <li>
                         <a href="#" data-open="cartModal">
                             <img v-if="numberOfCartItems < 1" class="cart-icon" src="../../assets/shopping-cart.svg">

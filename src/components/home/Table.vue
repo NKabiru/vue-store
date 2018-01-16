@@ -8,7 +8,7 @@
                     <div class="text-left">Kes. {{ game.price }}</div>
                     <div class="card-buttons">
                         <button class="tiny secondary button" @click="showItemInModal(game)">Details</button>
-                        <button class="tiny primary button" @click="addItemToCart(game)">Add</button>
+                        <button v-if="isLoggedIn" class="tiny primary button" @click="addItemToCart(game)">Add</button>
                     </div>
                 </div>
             </div>
@@ -24,6 +24,8 @@
 </template>
 
 <script>
+    import { mapGetters } from 'vuex';
+
     export default {
         name: "table-component",
 
@@ -38,7 +40,11 @@
         computed: {
             showGames(){
                 return this.$store.state.games;
-            }
+            },
+
+            ...mapGetters([
+                'isLoggedIn'
+            ])
         },
 
         mounted(){
