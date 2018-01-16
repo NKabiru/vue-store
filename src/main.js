@@ -24,5 +24,8 @@ new Vue({
   router,
   store,
   template: '<App/>',
+  mounted(){
+    $(this.$el).foundation();
+  },
   components: { App }
 });
