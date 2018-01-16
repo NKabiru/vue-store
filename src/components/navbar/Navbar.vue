@@ -15,6 +15,9 @@
                 <ul class="menu">
                     <li v-if="!isLoggedIn"><button class="clear button" data-open="signInModal">Login</button></li>
                     <li v-if="!isLoggedIn"><button class="clear button" data-open="signUpModal">Register</button></li>
+
+                    <li v-if="isLoggedIn"><a>{{ loggedInUser }}</a></li>
+
                     <li><button class="clear button" data-open="addGameModal">Add Item</button></li>
                     <li>
                         <a href="#" data-open="cartModal">
@@ -22,6 +25,7 @@
                             <img v-else class="cart-icon" src="../../assets/full-shopping-cart.svg">
                         </a>
                     </li>
+
                     <li v-if="isLoggedIn">
                         <button class="clear alert button" @click="logout">Logout</button>
                     </li>
@@ -52,7 +56,8 @@
         computed:{
             ...mapGetters([
                 'numberOfCartItems',
-                'isLoggedIn'
+                'isLoggedIn',
+                'loggedInUser'
             ])
         },
 

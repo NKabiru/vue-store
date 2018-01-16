@@ -9,6 +9,7 @@ const state = {
     cart: [],
     isLoggedIn: !!localStorage.getItem("token"),
     users: [],
+    loggedInUser: [],
     games: [
         {
             "deck": "A procedurally-generated game of world exploration, resource harvesting, and freeform construction. It supports local and online multiplayer, and is regularly updated with new content and features.",
@@ -178,12 +179,27 @@ const getters = {
 
     isLoggedIn: state => {
         return state.isLoggedIn;
+    },
+
+    loggedInUser: state => {
+        return state.loggedInUser[0];
     }
 };
 
 const mutations = {
-    [types.LOGIN] (state){
+    [types.LOGIN] (state, credentials){
         state.pending = true;
+        let token  = jwt.sign(credentials, 'secret');
+        let registeredUser = state.users.find( user => user.email === credentials.email);
+
+        if (registeredUser) {
+            localStorage.setItem('token', token);
+            state.loggedInUser.push(credentials.email);
+            state.isLoggedIn = true;
+        } else {
+            state.isLoggedIn = false;
+        }
+
     },
 
     [types.LOGIN_SUCCESS] (state){
@@ -192,6 +208,7 @@ const mutations = {
     },
 
     [types.LOGOUT] (state) {
+        state.loggedInUser.pop();
         state.isLoggedIn = false;
     },
 
@@ -199,7 +216,8 @@ const mutations = {
         state.pending = true;
         let token = jwt.sign(credentials, 'secret');
         localStorage.setItem('token', token);
-        state.users.push({ email: credentials.email, token: token});
+        state.loggedInUser.push(credentials.email);
+        state.users.push({ email: credentials.email, token: token, roleId: '2'});
         state.isLoggedIn = true;
     },
 
@@ -240,23 +258,10 @@ const mutations = {
 };
 
 const actions = {
-    login({ commit }, credentials){
-        commit(types.LOGIN);
-        return new Promise(resolve => {
-            setTimeout(() => {
-                let token = jwt.sign(credentials, 'secret');
-                localStorage.setItem('token', token);
-                commit(types.LOGIN_SUCCESS);
-                resolve();
-            }, 500);
-        });
-    },
-
     logout({ commit }){
         localStorage.removeItem('token');
         commit(types.LOGOUT);
-    },
-
+    }
 };
 
 export default new Vuex.Store({

@@ -13,9 +13,7 @@ import loadingGif from './assets/loading.gif'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
-Vue.use(VueLazyLoad, {
-  loading: loadingGif
-});
+Vue.use(VueLazyLoad, { loading: loadingGif });
 Vue.use(ElementUI, { locale });
 
 Vue.config.productionTip = false;
@@ -26,8 +24,5 @@ new Vue({
   router,
   store,
   template: '<App/>',
-  mounted(){
-    $(this.$el).foundation();
-  },
   components: { App }
 });

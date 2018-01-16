@@ -6,13 +6,13 @@
                 <div class="cell">
                     <label>
                         Email
-                        <input type="text">
+                        <input type="text" v-model="email">
                     </label>
                 </div>
                 <div class="cell">
                     <label>
                         Password
-                        <input type="password">
+                        <input type="password" v-model="password">
                     </label>
                 </div>
             </div>
@@ -41,15 +41,21 @@
 
         methods: {
             login(){
-                this.$store.dispatch("login", {
+                this.$store.commit('LOGIN', {
                     email: this.email,
                     password: this.password
-                }).then(() => {
-                    this.$router.push("/");
-                    this.$message.success("Logged In");
-                }).catch(err => {
-                    console.log(err);
-                })
+                });
+
+                this.$router.push('/');
+
+                if(!!localStorage.getItem('token')){
+                    this.$message.success('Logged In');
+                } else {
+                    this.$message.error('Unable to login');
+                }
+
+                this.email = '';
+                this.password = '';
             }
         },
 
