@@ -38,18 +38,45 @@
         <!--<add-game-modal></add-game-modal>-->
         <!--<cart></cart>-->
     <!--</div>-->
-    <v-toolbar app>
-        <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
-        <v-toolbar-title>Game Store</v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-toolbar-items>
-            <v-btn flat>Login</v-btn>
-            <v-btn flat>Register</v-btn>
-            <v-btn icon>
-                <v-icon>shopping_cart</v-icon>
-            </v-btn>
-        </v-toolbar-items>
-    </v-toolbar>
+    <div>
+        <v-toolbar app>
+            <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
+            <v-toolbar-title>Game Store</v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-toolbar-items>
+                <v-btn v-if="!isLoggedIn" flat slot="activator" v-on:click.native="dialog = true">Login</v-btn>
+                <v-btn v-if="!isLoggedIn" flat>Register</v-btn>
+                <v-btn icon>
+                    <v-icon>shopping_cart</v-icon>
+                </v-btn>
+            </v-toolbar-items>
+        </v-toolbar>
+
+        <v-dialog v-model="dialog" persistent max-width="500px">
+            <v-card>
+                <v-card-title>
+                    <span class="headline">Sign In</span>
+                </v-card-title>
+                <v-card-text>
+                    <v-container grid-list-md>
+                        <v-layout wrap>
+                            <v-flex xs12>
+                                <v-text-field label="Email Address" required></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field label="Password" type="password" required></v-text-field>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="" flat @click.native="dialog = false">Close</v-btn>
+                    <v-btn color="blue darken-1" flat @click.native="dialog = false">Submit</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+    </div>
 </template>
 
 <script>
@@ -64,6 +91,12 @@
 
     export default {
         name: "navbar",
+
+        data(){
+            return {
+                dialog: false
+            }
+        },
 
         computed:{
             ...mapGetters([
