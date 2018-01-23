@@ -1,43 +1,55 @@
 <template>
-    <div>
-        <div class="title-bar bottom-shadow show-for-small-only" data-hide-for="medium">
-            <button data-toggle="responsive-menu"><icon name="bars"></icon></button>
-            <div class="title-bar-title">&emsp;Game Store</div>
-        </div>
+    <!--<div>-->
+        <!--<div class="title-bar bottom-shadow show-for-small-only" data-hide-for="medium">-->
+            <!--<button data-toggle="responsive-menu"><icon name="bars"></icon></button>-->
+            <!--<div class="title-bar-title">&emsp;Game Store</div>-->
+        <!--</div>-->
 
-        <div class="top-bar bottom-shadow show-for-medium" id="responsive-menu">
-            <div class="top-bar-left">
-                <ul class="menu">
-                    <li class="menu-text">Game Store</li>
-                </ul>
-            </div>
-            <div class="top-bar-right">
-                <ul class="menu">
-                    <li v-if="!isLoggedIn"><button class="clear button" data-open="signInModal">Login</button></li>
-                    <li v-if="!isLoggedIn"><button class="clear button" data-open="signUpModal">Register</button></li>
+        <!--<div class="top-bar bottom-shadow show-for-medium" id="responsive-menu">-->
+            <!--<div class="top-bar-left">-->
+                <!--<ul class="menu">-->
+                    <!--<li class="menu-text">Game Store</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+            <!--<div class="top-bar-right">-->
+                <!--<ul class="menu">-->
+                    <!--<li v-if="!isLoggedIn"><button class="clear button" data-open="signInModal">Login</button></li>-->
+                    <!--<li v-if="!isLoggedIn"><button class="clear button" data-open="signUpModal">Register</button></li>-->
 
-                    <li v-if="isLoggedIn"><a>{{ loggedInUser }}</a></li>
+                    <!--<li v-if="isLoggedIn"><a>{{ loggedInUser }}</a></li>-->
 
-                    <li v-if="isLoggedIn"><button class="clear button" data-open="addGameModal">Add Item</button></li>
-                    <li>
-                        <a href="#" data-open="cartModal">
-                            <img v-if="numberOfCartItems < 1" class="cart-icon" src="../../assets/shopping-cart.svg">
-                            <img v-else class="cart-icon" src="../../assets/full-shopping-cart.svg">
-                        </a>
-                    </li>
+                    <!--<li v-if="isLoggedIn"><button class="clear button" data-open="addGameModal">Add Item</button></li>-->
+                    <!--<li>-->
+                        <!--<a href="#" data-open="cartModal">-->
+                            <!--<img v-if="numberOfCartItems < 1" class="cart-icon" src="../../assets/shopping-cart.svg">-->
+                            <!--<img v-else class="cart-icon" src="../../assets/full-shopping-cart.svg">-->
+                        <!--</a>-->
+                    <!--</li>-->
 
-                    <li v-if="isLoggedIn">
-                        <button class="clear alert button" @click="logout">Logout</button>
-                    </li>
-                </ul>
-            </div>
-        </div>
+                    <!--<li v-if="isLoggedIn">-->
+                        <!--<button class="clear alert button" @click="logout">Logout</button>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
 
-        <sign-in-modal></sign-in-modal>
-        <sign-up-modal></sign-up-modal>
-        <add-game-modal></add-game-modal>
-        <cart></cart>
-    </div>
+        <!--<sign-in-modal></sign-in-modal>-->
+        <!--<sign-up-modal></sign-up-modal>-->
+        <!--<add-game-modal></add-game-modal>-->
+        <!--<cart></cart>-->
+    <!--</div>-->
+    <v-toolbar app>
+        <v-toolbar-side-icon class="hidden-md-and-up"></v-toolbar-side-icon>
+        <v-toolbar-title>Game Store</v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-toolbar-items>
+            <v-btn flat>Login</v-btn>
+            <v-btn flat>Register</v-btn>
+            <v-btn icon>
+                <v-icon>shopping_cart</v-icon>
+            </v-btn>
+        </v-toolbar-items>
+    </v-toolbar>
 </template>
 
 <script>

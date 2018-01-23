@@ -11,7 +11,7 @@ import locale from 'element-ui/lib/locale/lang/en'
 import VueLazyLoad from 'vue-lazyload'
 import loadingGif from './assets/loading.gif'
 import Vuetify from 'vuetify'
-import 'node_modules/vuetify/dist/vuetify.min.css'
+import '../node_modules/vuetify/dist/vuetify.min.css'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 
