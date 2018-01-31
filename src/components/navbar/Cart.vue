@@ -1,5 +1,5 @@
 <template>
-    <div class="reveal" id="cartModal">
+    <div>
         <h4>Cart</h4>
         <template v-if="numberOfCartItems >= 1">
             <div class="grid-x">
@@ -78,21 +78,10 @@
                 this.$store.commit('REMOVE_FROM_CART', item);
                 this.$message.success("Item Removed");
             }
-        },
-
-        mounted(){
-            this.reveal = new Foundation.Reveal($('#cartModal'));
-        },
-
-        destroyed(){
-            this.reveal.destroy();
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .grey-text{
-        color: $dark-gray;
-        font-size: 0.8rem;
-    }
+
 </style>

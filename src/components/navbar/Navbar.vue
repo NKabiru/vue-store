@@ -44,15 +44,15 @@
             <v-toolbar-title>Game Store</v-toolbar-title>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-                <v-btn v-if="!isLoggedIn" flat slot="activator" v-on:click.native="dialog = true">Login</v-btn>
-                <v-btn v-if="!isLoggedIn" flat>Register</v-btn>
+                <v-btn v-if="!isLoggedIn" flat slot="activator" v-on:click.native="signIn = true">Login</v-btn>
+                <v-btn v-if="!isLoggedIn" flat slot="activator" v-on:click.native="signUp = true">Register</v-btn>
                 <v-btn icon>
                     <v-icon>shopping_cart</v-icon>
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
 
-        <v-dialog v-model="dialog" persistent max-width="500px">
+        <v-dialog v-model="signIn" persistent max-width="500px">
             <v-card>
                 <v-card-title>
                     <span class="headline">Sign In</span>
@@ -71,8 +71,33 @@
                 </v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn color="" flat @click.native="dialog = false">Close</v-btn>
-                    <v-btn color="blue darken-1" flat @click.native="dialog = false">Submit</v-btn>
+                    <v-btn color="" flat @click.native="signIn = false">Close</v-btn>
+                    <v-btn color="blue darken-1" flat @click.native="signIn = false">Submit</v-btn>
+                </v-card-actions>
+            </v-card>
+        </v-dialog>
+
+        <v-dialog v-model="signUp" persistent max-width="500px">
+            <v-card>
+                <v-card-title>
+                    <span class="headline">Sign Up</span>
+                </v-card-title>
+                <v-card-text>
+                    <v-container grid-list-md>
+                        <v-layout wrap>
+                            <v-flex xs12>
+                                <v-text-field label="Email Address" required></v-text-field>
+                            </v-flex>
+                            <v-flex xs12>
+                                <v-text-field label="Password" type="password" required></v-text-field>
+                            </v-flex>
+                        </v-layout>
+                    </v-container>
+                </v-card-text>
+                <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="" flat @click.native="signUp = false">Close</v-btn>
+                    <v-btn color="blue darken-1" flat @click.native="signUp = false">Submit</v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
@@ -94,7 +119,8 @@
 
         data(){
             return {
-                dialog: false
+                signIn: false,
+                signUp: false
             }
         },
 

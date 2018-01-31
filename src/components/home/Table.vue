@@ -47,10 +47,6 @@
             ])
         },
 
-        mounted(){
-           this.reveal = new Foundation.Reveal($('#viewGameModal'));
-        },
-
         methods: {
             showItemInModal(item){
                 this.reveal.open();
@@ -60,9 +56,6 @@
                 this.$message.info("Added to cart");
                 this.$store.commit('ADD_TO_CART', item);
             }
-        },
-        destroyed(){
-            this.reveal.destroy()
         }
     }
 </script>
