@@ -22,13 +22,25 @@
         <!--</div>-->
     <!--</div>-->
     <v-flex sm12>
-        <v-card v-for="game in showGames">
-            <v-card-media :src="game.image.small_url" height="200"></v-card-media>
-            <v-card-actions>
-                <v-spacer></v-spacer>
-
-            </v-card-actions>
-        </v-card>
+        <h3>Most Popular</h3>
+        <v-layout row wrap>
+           <v-flex md3 v-for="game in showGames">
+               <v-card>
+                   <v-card-media :src="game.image.small_url" height="400"></v-card-media>
+                   <v-card-title>
+                       <div>
+                           <div class="headline">{{ game.name }}</div>
+                           <div>{{ game.price }}</div>
+                       </div>
+                   </v-card-title>
+                   <v-card-actions>
+                       <v-spacer></v-spacer>
+                       <v-btn flat color="blue">Details</v-btn>
+                       <v-btn flat color="blue">Add To Cart</v-btn>
+                   </v-card-actions>
+               </v-card>
+           </v-flex>
+        </v-layout>
     </v-flex>
 </template>
 
