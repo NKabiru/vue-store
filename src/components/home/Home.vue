@@ -1,22 +1,39 @@
 <template>
-    <div class="grid-container">
-        <div class="grid-x grid-padding-x grid-space">
-            <div class="cell small-12 large-8">
+    <!--<div class="grid-container">-->
+        <!--<div class="grid-x grid-padding-x grid-space">-->
+            <!--<div class="cell small-12 large-8">-->
+                <!--<h4>Trending</h4>-->
+                <!--<carousel-component></carousel-component>-->
+            <!--</div>-->
+            <!--<div class="cell small-12 large-4">-->
+                <!--<h4>Featured</h4>-->
+                <!--<card-component></card-component>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="grid-x grid-padding-x grid-space">-->
+            <!--<div class="cell small-12">-->
+                <!--<h4>Most Popular</h4>-->
+                <!--<table-component></table-component>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <v-container grid-list-md>
+        <v-layout row wrap>
+            <v-flex sm8>
                 <h4>Trending</h4>
                 <carousel-component></carousel-component>
-            </div>
-            <div class="cell small-12 large-4">
+            </v-flex>
+            <v-flex sm4>
                 <h4>Featured</h4>
                 <card-component></card-component>
-            </div>
-        </div>
-        <div class="grid-x grid-padding-x grid-space">
-            <div class="cell small-12">
+            </v-flex>
+            <v-flex sm12>
                 <h4>Most Popular</h4>
                 <table-component></table-component>
-            </div>
-        </div>
-    </div>
+            </v-flex>
+        </v-layout>
+    </v-container>
 </template>
 
 <script>
@@ -28,6 +45,7 @@
         components: {
             CardComponent,
             TableComponent,
-            CarouselComponent }
+            CarouselComponent
+        }
     }
 </script>
