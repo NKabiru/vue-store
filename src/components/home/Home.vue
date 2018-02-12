@@ -20,18 +20,9 @@
 
     <v-container grid-list-md>
         <v-layout row wrap>
-            <v-flex sm8>
-                <h4>Trending</h4>
-                <carousel-component></carousel-component>
-            </v-flex>
-            <v-flex sm4>
-                <h4>Featured</h4>
-                <card-component></card-component>
-            </v-flex>
-            <v-flex sm12>
-                <h4>Most Popular</h4>
-                <table-component></table-component>
-            </v-flex>
+            <carousel-component></carousel-component>
+            <card-component></card-component>
+            <table-component></table-component>
         </v-layout>
     </v-container>
 </template>

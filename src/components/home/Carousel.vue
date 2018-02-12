@@ -1,7 +1,10 @@
 <template>
-    <v-carousel hide-delimiters>
-        <v-carousel-item v-for="(game,i) in carouselGames" v-bind:src="game.src" :key="i"></v-carousel-item>
-    </v-carousel>
+    <v-flex sm8>
+        <h3>Trending</h3>
+        <v-carousel hide-delimiters>
+            <v-carousel-item v-for="(game,i) in carouselGames" v-bind:src="game.src" :key="i"></v-carousel-item>
+        </v-carousel>
+    </v-flex>
 </template>
 
 <script>
