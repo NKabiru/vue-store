@@ -24,23 +24,34 @@
     <v-flex sm12>
         <h3>Most Popular</h3>
         <v-layout row wrap>
-           <v-flex md3 v-for="game in showGames">
+           <v-flex md4 v-for="game in showGames">
                <v-card>
                    <v-card-media :src="game.image.small_url" height="400"></v-card-media>
                    <v-card-title>
                        <div>
                            <div class="headline">{{ game.name }}</div>
-                           <div>{{ game.price }}</div>
+                           <div>Kes. {{ game.price }}</div>
                        </div>
                    </v-card-title>
                    <v-card-actions>
                        <v-spacer></v-spacer>
-                       <v-btn flat color="blue">Details</v-btn>
-                       <v-btn flat color="blue">Add To Cart</v-btn>
+                       <v-btn flat color="blue" @click="showItemInModal(game); detailsDialog = true">Details</v-btn>
+                       <v-btn v-if="isLoggedIn" flat color="blue" @click="addItemToCart(game)">Add To Cart</v-btn>
                    </v-card-actions>
                </v-card>
            </v-flex>
         </v-layout>
+
+        <v-dialog v-model="detailsDialog" max-width="500">
+            <v-card>
+                <v-card-title class="headline">{{ selectedItem.name }}</v-card-title>
+                <v-card-text>{{ selectedItem.deck }}</v-card-text>
+                <v-card-actions>
+                    <v-btn flat color="blue" @click="detailsDialog = false">Close</v-btn>
+                </v-card-actions>
+            </v-card>
+
+        </v-dialog>
     </v-flex>
 </template>
 
@@ -54,7 +65,8 @@
             return{
                 tableItems: '',
                 selectedItem: '',
-                itemQuantity: 0
+                itemQuantity: 0,
+                detailsDialog: false
             }
         },
 
@@ -70,7 +82,6 @@
 
         methods: {
             showItemInModal(item){
-                this.reveal.open();
                 this.selectedItem = item;
             },
             addItemToCart(item){
